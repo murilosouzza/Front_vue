@@ -1,0 +1,99 @@
+/* =============================================
+   Design Tokens — Mental Health
+   ============================================= */
+:root {
+  --gradient-bg: linear-gradient(180deg, #9bb5d1 0%, #f7c5c5 50%, #f9d895 100%);
+  --color-primary: #6C5B7B;
+  --color-dark:    #4b3f5c;
+  --color-mid:     #5a4a6a;
+  --color-muted:   #6b5e7a;
+  --color-input-bg: rgba(230, 180, 176, 0.7);
+  --color-card-bg:  rgba(255, 255, 255, 0.5);
+  --color-card-border: rgba(255, 255, 255, 0.4);
+  --blur: blur(12px);
+  --shadow-card: 0 15px 40px rgba(0, 0, 0, 0.2);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #app { height: 100%; width: 100%; margin: 0; padding: 0; }
+body { font-family: var(--font-family); background: var(--gradient-bg); min-height: 100vh; }
+a { text-decoration: none; }
+
+/* Glass utilities (não cobertas pelo Bootstrap) */
+.glass        { background: var(--color-card-bg);    backdrop-filter: var(--blur); border: 1px solid var(--color-card-border); }
+.glass-dark   { background: rgba(75, 63, 92, 0.97);  backdrop-filter: var(--blur); }
+.glass-light  { background: rgba(255, 255, 255, 0.35); backdrop-filter: var(--blur); }
+.glass-white  { background: rgba(255, 255, 255, 0.6);  backdrop-filter: var(--blur); }
+
+/* Text color utilities */
+.text-primary-app { color: var(--color-primary) !important; }
+.text-dark-app    { color: var(--color-dark)    !important; }
+.text-mid-app     { color: var(--color-mid)     !important; }
+.text-muted-app   { color: var(--color-muted)   !important; }
+
+/* Input custom */
+.input-app {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-input-bg);
+  color: var(--color-primary);
+  font-size: 16px;
+  font-family: var(--font-family);
+  outline: none;
+  transition: background-color 0.2s;
+}
+.input-app::placeholder { color: var(--color-primary); opacity: 0.8; }
+.input-app:focus { background-color: rgba(230, 180, 176, 0.9); }
+
+/* Button variants */
+.btn-app-primary {
+  background-color: var(--color-input-bg);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-soft);
+  transition: background-color 0.3s, transform 0.2s;
+}
+.btn-app-primary:hover:not(:disabled) { background-color: #f8d59c; transform: scale(1.03); }
+
+.btn-app-yellow {
+  background: linear-gradient(90deg, #f7c948, #f4a261);
+  color: var(--color-mid);
+  box-shadow: var(--shadow-soft);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-app-yellow:hover:not(:disabled) { opacity: 0.9; transform: scale(1.02); }
+
+.btn-app-ghost {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.btn-app-ghost:hover:not(:disabled) { background: rgba(255, 255, 255, 0.3); color: #fff; }
+
+/* Slide-up transition */
+.slide-up-enter-from, .slide-up-leave-to { transform: translateY(100%); }
+.slide-up-enter-active, .slide-up-leave-active { transition: transform 0.3s ease; }
+
+/* Fade transition */
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
+
+/* Toast transition */
+.toast-enter-from, .toast-leave-to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+.toast-enter-active, .toast-leave-active { transition: all 0.3s; }
+
+/* Notif transition */
+.notif-enter-from, .notif-leave-to { opacity: 0; transform: translateY(-20px); }
+.notif-enter-active, .notif-leave-active { transition: all 0.4s; }
+
+/* Appear animation */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-aparecer { animation: aparecer 0.5s ease forwards; }
